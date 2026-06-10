@@ -1,0 +1,147 @@
+.timer-page {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.timer-page__background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.timer-page__back {
+  position: absolute;
+  top: clamp(1.25rem, 4vh, 2rem);
+  left: clamp(1.25rem, 4vw, 2rem);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2.75rem, 7vw, 3.25rem);
+  height: clamp(2.75rem, 7vw, 3.25rem);
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.timer-page__back svg {
+  width: 40%;
+  height: 40%;
+}
+
+.timer-page__back:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.timer-page__back:active {
+  transform: scale(0.96);
+}
+
+.timer-page--sunny .timer__display {
+  color: #f7ffad;
+}
+
+.timer-page--sunny .timer__prompt {
+  color: #f7ffad;
+}
+
+.timer-page--rainy .timer__display {
+  color: #c7c7c7;
+}
+
+.timer-page--rainy .timer__prompt {
+  color: #c7c7c7;
+}
+
+.timer-page--rainy .audio-controls__label {
+  color: #c7c7c7;
+}
+
+.timer-page--rainy .audio-controls__slider {
+  background: rgba(199, 199, 199, 0.22);
+}
+
+.timer-page--rainy .audio-controls__slider::-webkit-slider-runnable-track {
+  background: rgba(199, 199, 199, 0.22);
+}
+
+.timer-page--rainy .audio-controls__slider::-moz-range-track {
+  background: rgba(199, 199, 199, 0.22);
+}
+
+.timer-page--rainy .confirm-modal__button {
+  color: #c7c7c7;
+}
+
+.timer-page--rainy .confirm-modal__button:hover {
+  color: #e0e0e0;
+  text-shadow: 0 0 12px rgba(199, 199, 199, 0.65);
+}
+
+.timer-page--snowy .timer__display {
+  color: #fff1d4;
+}
+
+.timer-page--snowy .timer__prompt {
+  color: #fff1d4;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+.timer-page--snowy .audio-controls__label {
+  color: #fff1d4;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+.timer-page--snowy .audio-controls__slider {
+  background: rgba(255, 241, 212, 0.22);
+}
+
+.timer-page--snowy .audio-controls__slider::-webkit-slider-runnable-track {
+  background: rgba(255, 241, 212, 0.22);
+}
+
+.timer-page--snowy .audio-controls__slider::-moz-range-track {
+  background: rgba(255, 241, 212, 0.22);
+}
+
+.timer-page--snowy .confirm-modal__button {
+  color: #fff1d4;
+}
+
+.timer-page--snowy .confirm-modal__button:hover {
+  color: #fff9eb;
+  text-shadow: 0 0 12px rgba(255, 241, 212, 0.65);
+}
+
+.timer-page__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: clamp(3.5rem, 8vh, 5.5rem) clamp(1.5rem, 5vw, 3rem)
+    clamp(2rem, 5vh, 3rem);
+}

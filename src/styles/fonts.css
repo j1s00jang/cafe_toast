@@ -1,0 +1,43 @@
+@font-face {
+  font-family: Afacad;
+  src: url('/fonts/afacad-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Afacad;
+  src: url('/fonts/afacad-latin-600-normal.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Against;
+  src:
+    local('Against'),
+    local('Against Regular'),
+    url('/fonts/against-regular.otf') format('opentype'),
+    url('/fonts/against-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: BigShouldersDisplay;
+  src: url('/fonts/big-shoulders-display-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DidactGothic;
+  src: url('/fonts/didact-gothic-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

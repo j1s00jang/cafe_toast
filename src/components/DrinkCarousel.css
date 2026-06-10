@@ -1,0 +1,47 @@
+.drink-carousel {
+  width: 100%;
+  overflow: visible;
+}
+
+.drink-carousel__stage {
+  position: relative;
+  width: 100%;
+  height: clamp(240px, 42vh, 400px);
+}
+
+.drink-carousel__item {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: bottom center;
+}
+
+.drink-carousel__item--center {
+  cursor: default;
+}
+
+.drink-carousel__image {
+  display: block;
+  height: clamp(220px, 38vh, 360px);
+  width: auto;
+  max-width: min(52vw, 320px);
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (max-width: 640px) {
+  .drink-carousel__stage {
+    height: clamp(200px, 36vh, 300px);
+  }
+
+  .drink-carousel__image {
+    height: clamp(180px, 32vh, 260px);
+    max-width: min(58vw, 240px);
+  }
+}
