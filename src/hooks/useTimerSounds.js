@@ -41,36 +41,68 @@ export function createTimerSounds() {
   const getMusicOutputVolume = () => (musicMuted ? 0 : musicVolume)
   const getAmbientOutputVolume = () => (ambientMuted ? 0 : ambientVolume)
 
-  const playCurrentMusicTrack = () => {
+  const unloadMusic = (howl) => {
+    if (!howl) return
+    howl.stop()
+    window.setTimeout(() => howl.unload(), 0)
+  }
+
+  const advanceMusic = () => {
     if (isDestroyed) return
 
-    if (music) {
-      music.unload()
-      music = null
+    musicPlaylistIndex += 1
+
+    if (musicPlaylistIndex >= musicPlaylist.length) {
+      musicPlaylist = shuffleTracks(MUSIC_TRACKS)
+      musicPlaylistIndex = 0
     }
+
+    playCurrentMusicTrack()
+  }
+
+  const playCurrentMusicTrack = () => {
+    if (isDestroyed) return
 
     const track = musicPlaylist[musicPlaylistIndex]
     if (!track) return
 
-    music = new Howl({
+    const previousMusic = music
+    const nextMusic = new Howl({
       src: [track],
       loop: false,
+      html5: true,
       volume: getMusicOutputVolume(),
-      onend: () => {
-        if (isDestroyed) return
-
-        musicPlaylistIndex += 1
-
-        if (musicPlaylistIndex >= musicPlaylist.length) {
-          musicPlaylist = shuffleTracks(MUSIC_TRACKS)
-          musicPlaylistIndex = 0
-        }
-
-        playCurrentMusicTrack()
-      },
     })
 
-    music.play()
+    music = nextMusic
+
+    nextMusic.once('end', advanceMusic)
+    nextMusic.once('loaderror', () => {
+      if (isDestroyed || music !== nextMusic) return
+      advanceMusic()
+    })
+    nextMusic.once('playerror', () => {
+      if (isDestroyed || music !== nextMusic) return
+      nextMusic.once('unlock', () => {
+        if (!isDestroyed && music === nextMusic) {
+          nextMusic.play()
+        }
+      })
+    })
+
+    const playWhenReady = () => {
+      if (!isDestroyed && music === nextMusic) {
+        nextMusic.play()
+      }
+    }
+
+    if (nextMusic.state() === 'loaded') {
+      playWhenReady()
+    } else {
+      nextMusic.once('load', playWhenReady)
+    }
+
+    unloadMusic(previousMusic)
   }
 
   const startMusic = () => {
@@ -119,11 +151,8 @@ export function createTimerSounds() {
     ambient.stop()
     ambient.unload()
 
-    if (music) {
-      music.stop()
-      music.unload()
-      music = null
-    }
+    unloadMusic(music)
+    music = null
   }
 
   return {
