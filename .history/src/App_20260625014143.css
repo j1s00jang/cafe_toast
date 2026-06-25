@@ -1,0 +1,18 @@
+.app-shell {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.app-screen {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    will-change: opacity, filter, transform;
+}

@@ -26,7 +26,7 @@ export function createTimerSounds() {
   const ambient = new Howl({
     src: [ambientSound],
     loop: true,
-    volume: 1,
+    volume: 0.3,
   })
 
   let music = null
@@ -35,8 +35,8 @@ export function createTimerSounds() {
   let isDestroyed = false
   let musicMuted = false
   let ambientMuted = false
-  let musicVolume = 1
-  let ambientVolume = 1
+  let musicVolume = 0.3
+  let ambientVolume = 0.3
 
   const getMusicOutputVolume = () => (musicMuted ? 0 : musicVolume)
   const getAmbientOutputVolume = () => (ambientMuted ? 0 : ambientVolume)

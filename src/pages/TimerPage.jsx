@@ -9,8 +9,8 @@ import './TimerPage.css'
 function TimerPage({ drink, modeId, background, soundsRef, onBack }) {
   const [musicMuted, setMusicMuted] = useState(false)
   const [ambientMuted, setAmbientMuted] = useState(false)
-  const [musicVolume, setMusicVolume] = useState(1)
-  const [ambientVolume, setAmbientVolume] = useState(1)
+  const [musicVolume, setMusicVolume] = useState(0.3)
+  const [ambientVolume, setAmbientVolume] = useState(0.3)
   const [showLeaveModal, setShowLeaveModal] = useState(false)
 
   useEffect(() => {
